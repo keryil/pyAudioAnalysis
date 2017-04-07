@@ -9,8 +9,8 @@ import audioop
 import signal
 import csv
 import ntpath
-from . import audioFeatureExtraction as aF
-from . import audioBasicIO
+import audioFeatureExtraction as aF
+import audioBasicIO
 from matplotlib.mlab import find
 import matplotlib.pyplot as plt
 import scipy.io as sIO
@@ -738,7 +738,7 @@ def evaluateClassifier(features, ClassNames, nExp, ClassifierName, Params, param
                 F1All.append(numpy.mean(F1))
                 # print "{0:6.4f}{1:6.4f}{2:6.1f}{3:6.1f}".format(nu, g, 100.0*acAll[-1], 100.0*F1All[-1])
 
-    print(("\t\t"), end=' ')
+    print("\t\t", end=" ")
     for i, c in enumerate(ClassNames):
         if i == len(ClassNames)-1:
             print("{0:s}\t\t".format(c), end=' ')

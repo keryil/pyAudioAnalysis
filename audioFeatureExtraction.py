@@ -14,9 +14,9 @@ from scipy.signal import fftconvolve
 from matplotlib.mlab import find
 import matplotlib.pyplot as plt
 from scipy import linalg as la
-from . import audioTrainTest as aT
-from . import audioBasicIO
-from . import utilities
+import audioTrainTest as aT
+import audioBasicIO
+import utilities
 from scipy.signal import lfilter, hamming
 #from scikits.talkbox import lpc
 
@@ -275,7 +275,7 @@ def stChromaFeatures(X, fs, nChroma, nFreqsPerChroma):
     newD = int(numpy.ceil(C.shape[0] / 12.0) * 12)
     C2 = numpy.zeros((newD, ))
     C2[0:C.shape[0]] = C
-    C2 = C2.reshape(C2.shape[0]/12, 12)
+    C2 = C2.reshape(C2.shape[0]//12, 12)
     #for i in range(12):
     #    finalC[i] = numpy.sum(C[i:C.shape[0]:12])
     finalC = numpy.matrix(numpy.sum(C2, axis=0)).T
@@ -544,7 +544,7 @@ def stFeatureExtraction(signal, Fs, Win, Step):
     N = len(signal)                                # total number of samples
     curPos = 0
     countFrames = 0
-    nFFT = Win / 2
+    nFFT = Win // 2
 
     [fbank, freqs] = mfccInitFilterBanks(Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
     nChroma, nFreqsPerChroma = stChromaFeaturesInit(nFFT, Fs)
@@ -727,7 +727,7 @@ def dirWavFeatureExtraction(dirName, mtWin, mtStep, stWin, stStep, computeBEAT=F
     wavFilesList = sorted(wavFilesList)    
 
     for i, wavFile in enumerate(wavFilesList):        
-        print(("Analyzing file {0:d} of {1:d}: {2:s}".format(i + 1, len(wavFilesList), wavFile.encode('utf-8'))))
+        print(("Analyzing file {0:d} of {1:d}: {2:s}".format(i + 1, len(wavFilesList), wavFile)))
         if os.stat(wavFile).st_size == 0:
             print("   (EMPTY FILE -- SKIPPING)")
             continue        

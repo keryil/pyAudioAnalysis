@@ -3,9 +3,9 @@ import sklearn.cluster
 import time
 import scipy
 import os
-from . import audioFeatureExtraction as aF
-from . import audioTrainTest as aT
-from . import audioBasicIO
+import audioFeatureExtraction as aF
+import audioTrainTest as aT
+import audioBasicIO
 import matplotlib.pyplot as plt
 from scipy.spatial import distance
 import matplotlib.pyplot as plt

@@ -12,12 +12,12 @@ import threading
 import shutil
 import ntpath
 import matplotlib.pyplot as plt
-from . import audioFeatureExtraction as aF
-from . import audioTrainTest as aT
-from . import audioSegmentation as aS
-from . import audioVisualization as aV
-from . import audioBasicIO
-from . import utilities as uT
+import audioFeatureExtraction as aF
+import audioTrainTest as aT
+import audioSegmentation as aS
+import audioVisualization as aV
+import audioBasicIO
+import utilities as uT
 import scipy.io.wavfile as wavfile
 import matplotlib.patches
 
