@@ -529,7 +529,7 @@ def stFeatureExtraction(signal, Fs, Win, Step):
     RETURNS
         stFeatures:   a numpy array (numOfFeatures x numOfShortTermWindows)
     """
-
+    print(Fs, Win, Step)
     Win = int(Win)
     Step = int(Step)
 

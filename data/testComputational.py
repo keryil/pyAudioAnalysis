@@ -1,8 +1,8 @@
 import sys
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import audioFeatureExtraction
-from pyAudioAnalysis import audioTrainTest as aT
-from pyAudioAnalysis import audioSegmentation as aS
+import audioBasicIO
+import audioFeatureExtraction
+import audioTrainTest as aT
+import audioSegmentation as aS
 import matplotlib.pyplot as plt
 import time
 
