@@ -429,6 +429,11 @@ def hmmSegmentation(wavFileName, hmmModelName, PLOT=False, gtFileName=""):
         classesAll = pickle.load(fo)
         mtWin = pickle.load(fo)
         mtStep = pickle.load(fo)
+    except UnicodeDecodeError:
+        hmm = pickle.load(fo, encoding='latin1')
+        classesAll = pickle.load(fo, encoding='latin1')
+        mtWin = pickle.load(fo, encoding='latin1')
+        mtStep = pickle.load(fo, encoding='latin1')
     except:
         fo.close()
     fo.close()
