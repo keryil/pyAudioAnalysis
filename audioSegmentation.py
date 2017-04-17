@@ -3,6 +3,7 @@ import glob
 import os
 import os.path
 import pickle
+from importlib import util
 
 import hmmlearn.hmm
 import matplotlib.pyplot as plt
@@ -16,6 +17,8 @@ from scipy.spatial import distance
 import pyAudioAnalysis.audioBasicIO as audioBasicIO
 import pyAudioAnalysis.audioFeatureExtraction as aF
 import pyAudioAnalysis.audioTrainTest as aT
+
+ROOT = util.find_spec("pyAudioAnalysis").submodule_search_locations[0]
 
 """ General utility functions """
 
@@ -145,7 +148,7 @@ def readSegmentGT(gtFile):
      - segEnd:       a numpy array of segments' ending positions
      - segLabel:     a list of respective class labels (strings)
     '''
-    f = open(gtFile, "rb")
+    f = open(gtFile, "r")
     reader = csv.reader(f, delimiter=',')
     segStart = []
     segEnd = []
@@ -702,9 +705,12 @@ def speakerDiarization(fileName, numOfSpeakers, mtSize=2.0, mtStep=0.2, stWin=0.
     [Fs, x] = audioBasicIO.readAudioFile(fileName)
     x = audioBasicIO.stereo2mono(x)
     Duration = len(x) / Fs
-
-    [Classifier1, MEAN1, STD1, classNames1, mtWin1, mtStep1, stWin1, stStep1, computeBEAT1] = aT.loadKNNModel(os.path.join("data","knnSpeakerAll"))
-    [Classifier2, MEAN2, STD2, classNames2, mtWin2, mtStep2, stWin2, stStep2, computeBEAT2] = aT.loadKNNModel(os.path.join("data","knnSpeakerFemaleMale"))
+    path = os.path.abspath(os.path.join(ROOT, "data", "knnSpeakerAll"))
+    aT.loadKNNModel(path)
+    [Classifier1, MEAN1, STD1, classNames1, mtWin1, mtStep1, stWin1, stStep1, computeBEAT1] = aT.loadKNNModel(
+        os.path.join(ROOT, "data", "knnSpeakerAll"))
+    [Classifier2, MEAN2, STD2, classNames2, mtWin2, mtStep2, stWin2, stStep2, computeBEAT2] = aT.loadKNNModel(
+        os.path.join(ROOT, "data", "knnSpeakerFemaleMale"))
 
     [MidTermFeatures, ShortTermFeatures] = aF.mtFeatureExtraction(x, Fs, mtSize * Fs, mtStep * Fs, round(Fs * stWin), round(Fs*stWin * 0.5))
 

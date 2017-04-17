@@ -459,7 +459,7 @@ def loadKNNModel(kNNModelName, isRegression=False):
     try:
         fo = open(kNNModelName, "rb")
     except IOError:
-        print("didn't find file")
+        print("didn't find file {}".format(kNNModelName))
         return
     try:
         X = pickle.load(fo)
