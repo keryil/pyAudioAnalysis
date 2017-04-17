@@ -1,23 +1,24 @@
-import sys
 import time
-import os
 import glob
-import numpy
-import pickle
-import aifc
+# import pickles
 import math
-from numpy import NaN, Inf, arange, isscalar, array
-from scipy.fftpack import rfft
+import os
+import time
+
+# from scipy.signal import fftconvolve
+# from matplotlib.mlab import find
+import matplotlib.pyplot as plt
+import numpy
+# from numpy import NaN, Inf, arange, isscalar, array
+# from scipy.fftpack import rfft
 from scipy.fftpack import fft
 from scipy.fftpack.realtransforms import dct
-from scipy.signal import fftconvolve
-from matplotlib.mlab import find
-import matplotlib.pyplot as plt
-from scipy import linalg as la
-import audioTrainTest as aT
-import audioBasicIO
-import utilities
-from scipy.signal import lfilter, hamming
+# from scipy import linalg as la
+# import pyAudioAnalysis.audioTrainTest as aT
+# import pyAudioAnalysis.audioBasicIO
+# import pyAudioAnalysis.utilities
+from scipy.signal import lfilter
+
 #from scikits.talkbox import lpc
 
 eps = 0.00000001

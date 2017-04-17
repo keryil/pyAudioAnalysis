@@ -1,23 +1,22 @@
-import numpy
-import sklearn.cluster
-import time
-import scipy
-import os
-import audioFeatureExtraction as aF
-import audioTrainTest as aT
-import audioBasicIO
-import matplotlib.pyplot as plt
-from scipy.spatial import distance
-import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-import sklearn.discriminant_analysis
 import csv
+import glob
+import os
 import os.path
+import pickle
+
+import hmmlearn.hmm
+import matplotlib.pyplot as plt
+import numpy
+import scipy
 import sklearn
 import sklearn.cluster
-import hmmlearn.hmm
-import pickle
-import glob
+import sklearn.cluster
+import sklearn.discriminant_analysis
+from scipy.spatial import distance
+
+import pyAudioAnalysis.audioBasicIO as audioBasicIO
+import pyAudioAnalysis.audioFeatureExtraction as aF
+import pyAudioAnalysis.audioTrainTest as aT
 
 """ General utility functions """
 
@@ -897,11 +896,11 @@ def speakerDiarization(fileName, numOfSpeakers, mtSize=2.0, mtStep=0.2, stWin=0.
         ax1.set_yticks(numpy.array(list(range(len(classNames)))))
         ax1.axis((0, Duration, -1, len(classNames)))
         ax1.set_yticklabels(classNames)
-        ax1.plot(numpy.array(list(range(len(cls))))*mtStep+mtStep/2.0, cls)
+        ax1.plot(numpy.array(list(range(len(cls)))) * mtStep + mtStep / 2.0, cls)
 
     if os.path.isfile(gtFile):
         if PLOT:
-            ax1.plot(numpy.array(list(range(len(flagsGT))))*mtStep+mtStep/2.0, flagsGT, 'r')
+            ax1.plot(numpy.array(list(range(len(flagsGT)))) * mtStep + mtStep / 2.0, flagsGT, 'r')
         purityClusterMean, puritySpeakerMean = evaluateSpeakerDiarization(cls, flagsGT)
         print("{0:.1f}\t{1:.1f}".format(100*purityClusterMean, 100*puritySpeakerMean))
         if PLOT:

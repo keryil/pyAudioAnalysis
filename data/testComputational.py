@@ -1,10 +1,10 @@
 import sys
-import audioBasicIO
-import audioFeatureExtraction
-import audioTrainTest as aT
-import audioSegmentation as aS
-import matplotlib.pyplot as plt
 import time
+
+import pyAudioAnalysis.audioBasicIO as audioBasicIO
+import pyAudioAnalysis.audioFeatureExtraction as audioFeatureExtraction
+import pyAudioAnalysis.audioSegmentation as aS
+import pyAudioAnalysis.audioTrainTest as aT
 
 nExp = 4
 

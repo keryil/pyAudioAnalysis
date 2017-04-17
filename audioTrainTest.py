@@ -1,24 +1,20 @@
-import sys
-import numpy
-import time
-import os
-import glob
-import pickle
-import shutil
-import audioop
-import signal
 import csv
+import glob
 import ntpath
-import audioFeatureExtraction as aF
-import audioBasicIO
-from matplotlib.mlab import find
-import matplotlib.pyplot as plt
-import scipy.io as sIO
-from scipy import linalg as la
-from scipy.spatial import distance
-import sklearn.svm
+import os
+import pickle
+import signal
+import sys
+
+import numpy
 import sklearn.decomposition
 import sklearn.ensemble
+import sklearn.svm
+from scipy import linalg as la
+from scipy.spatial import distance
+
+import pyAudioAnalysis.audioFeatureExtraction as aF
+
 
 def signal_handler(signal, frame):
     print('You pressed Ctrl+C! - EXIT')

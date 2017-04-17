@@ -28,7 +28,7 @@ for i = 1:length(Labels)
     Labels(i) = find(uLabels==Labels(i));
 end
 
-plot(Times, Labels);
+plot_dummy(Times, Labels);
 
 
 
