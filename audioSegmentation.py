@@ -10,7 +10,6 @@ import numpy
 import scipy
 import sklearn
 import sklearn.cluster
-import sklearn.cluster
 import sklearn.discriminant_analysis
 from scipy.spatial import distance
 

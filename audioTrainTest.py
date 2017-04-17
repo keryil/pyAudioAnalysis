@@ -14,6 +14,7 @@ from scipy import linalg as la
 from scipy.spatial import distance
 
 import pyAudioAnalysis.audioFeatureExtraction as aF
+from pyAudioAnalysis import audioBasicIO
 
 
 def signal_handler(signal, frame):
@@ -522,7 +523,10 @@ def loadSVModel(SVMmodelName, isRegression=False):
 
     COEFF = []
     with open(SVMmodelName, 'rb') as fid:
-        SVM = pickle.load(fid)    
+        try:
+            SVM = pickle.load(fid)
+        except UnicodeDecodeError:
+            SVM = pickle.load(fid, encoding="latin1")
 
     if isRegression:
         return(SVM, MEAN, STD, mtWin, mtStep, stWin, stStep, computeBEAT)
